@@ -2,12 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
+  baseUrl = environment.baseUrl;
 
   logoutButton = new Subject();
   logoutButton$ = this.logoutButton.asObservable();
@@ -35,7 +37,7 @@ export class AuthenticationService {
       .set('Content-Type', 'application/json')
       .set('Authorization', this.createBasicAuthToken(username, password)) };
    
-    return this.http.get("/api/v1/basicauth",options).pipe(map((res) => {
+    return this.http.get(this.baseUrl + 'api/v1/basicauth',options).pipe(map((res) => {
         this.username = username;
         this.password = password; 
         this.registerSuccessfulLogin(username, password);
