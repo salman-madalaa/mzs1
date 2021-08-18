@@ -1,0 +1,8 @@
+{
+    "/api": {
+        "target": "https://stark-dusk-21758.herokuapp.com",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin":true
+    }
+}

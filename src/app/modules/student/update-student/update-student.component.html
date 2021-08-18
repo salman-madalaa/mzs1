@@ -1,0 +1,302 @@
+
+<h2 mat-dialog-title style="text-align: center;">Update Student</h2>
+
+<form [formGroup]="student" autocomplete="off" (onClick)="update(student.value)"  fxLayout="column wrap"
+fxLayoutAlign="center center" fxLayoutGap="10px">
+
+<mat-dialog-content class="mat-typography">
+
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Basic Details">
+      <br>
+      <mat-form-field>
+        <mat-label> Registration ID </mat-label>
+        <input matInput type="number"  formControlName="registrationId" id="registrationId"  readonly>
+      </mat-form-field>
+        &nbsp;  &nbsp;
+
+      <mat-form-field>
+        <mat-label> Date of admission </mat-label>
+        <input matInput type="date"  formControlName="dateOfAdmission" id="dateOfAdmission"  >
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+      <mat-form-field>
+        <mat-label> Samagra ID </mat-label>
+        <input matInput type="number"  formControlName="samagraId" id="samagraId">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field >
+        <mat-label> First name </mat-label>
+        <input matInput type="text" formControlName="firstName" id="firstName" >
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field>
+        <mat-label> Last name </mat-label>
+        <input matInput type="text"  formControlName="lastName" id="lastName">
+       </mat-form-field>
+       &nbsp;  &nbsp;
+
+       <br>
+
+       <mat-form-field>
+        <mat-select  placeholder="FatherMotherExpired" formControlName="fatherMotherExpired" id="fatherMotherExpired" required>
+          <mat-option [value]="true" (click)="fatherMotherExpired(true)">Yes</mat-option>
+          <mat-option [value]="false" (click)="fatherMotherExpired(false)">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+
+
+       <mat-form-field >
+        <mat-label> Father name </mat-label>
+        <input matInput type="text"  formControlName="fatherName" id="fatherName" [readonly]="FMExpired != false" [required]="FMExpired == false">
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field >
+        <mat-label> Mother name </mat-label>
+        <input matInput type="text" formControlName="motherName" id="motherName" [readonly]="FMExpired != false" [required]="FMExpired == false">
+      </mat-form-field>
+
+      <br>
+
+       <mat-form-field>
+        <mat-label> Mobile number </mat-label>
+        <input matInput type="number"  formControlName="mobileNumber" id="mobileNumber" maxlength="10" onlyNumber>
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field class="example-full-width">
+        <mat-label>Perment address</mat-label>
+        <textarea matInput type="text"  formControlName="permanentAddress" id="permanentAddress" ></textarea>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Present address</mat-label>
+        <textarea matInput type="text"  formControlName="presentAddress" id="presentAddress" ></textarea>
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+<br>
+      <mat-form-field>
+        <mat-label>RTE Student</mat-label>
+       <mat-select formControlName="rteStudent" required>
+        <mat-option [value]="true" (click)="rteStudent(true)">Yes</mat-option>
+        <mat-option [value]="false" (click)="rteStudent(false)">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp; &nbsp;
+
+       <mat-form-field>
+        <mat-label>Class To Join</mat-label>
+        <mat-select formControlName="classToJoin" disableOptionCentering required>
+          <mat-option value="1">First Class</mat-option>
+          <mat-option value="2">Second Class</mat-option>
+          <mat-option value="3">Third Class</mat-option>
+          <mat-option value="4">Fourth Class</mat-option>
+          <mat-option value="5">Fifth Class</mat-option>
+          <mat-option value="6">Sixth Class</mat-option>
+          <mat-option value="7">Seventh Class</mat-option>
+          <mat-option value="8">Eighth Class</mat-option>
+          <mat-option value="9" *ngIf = "isRteStudent == false">Ninth Class</mat-option>
+          <mat-option value="10" *ngIf = "isRteStudent == false">Tenth Class</mat-option>
+        </mat-select>
+      </mat-form-field>
+       &nbsp;  &nbsp;
+
+       <br>
+
+       <mat-form-field>
+        <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender"  id="gender" required>
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Famale">Female</mat-option>
+            <mat-option value="Others">Others</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <br>
+
+       <mat-form-field>
+        <mat-label>Date of birth</mat-label>
+        <input matInput type="date" formControlName="dateOfBirth" id="dateOfBirth"  >
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field>
+        <mat-label>Marks of identification</mat-label>
+        <input matInput type="text"  formControlName="marksOfIdentification" id="marksOfIdentification"  >
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field>
+        <mat-label>Rligion</mat-label>
+        <input matInput type="text"  formControlName="religion" id="religion"  >
+      </mat-form-field>
+      <br>
+
+       <mat-form-field>
+        <mat-label>Cast</mat-label>
+        <input matInput type="text"  formControlName="caste" id="caste"  >
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field>
+        <mat-label>Caste ID</mat-label>
+        <input matInput type="text"  formControlName="castId" id="castId"  >
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field>
+        <mat-label>Aadhar number</mat-label>
+        <input matInput type="number"  formControlName="aadharNumber" id="aadharNumber" minlength="12" maxlength="12">
+      </mat-form-field>
+      <br>
+
+       <mat-form-field>
+        <mat-label>Bank account number</mat-label>
+        <input matInput type="number"  formControlName="bankAccountNumber" id="bankAccountNumber"  >
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field>
+        <mat-label>IFSC code</mat-label>
+        <input matInput type="text"  formControlName="ifscCode" id="ifscCode"  >
+      </mat-form-field>
+      &nbsp;  &nbsp;
+
+       <mat-form-field>
+        <mat-select  placeholder="ChildHandicapped" formControlName="childHandicapped" id="childHandicapped" >
+          <mat-option [value]="true">Yes</mat-option>
+          <mat-option [value]="false">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+
+
+      <mat-form-field>
+        <mat-label>Siblings</mat-label>
+        <mat-select formControlName="siblings" required>
+          <mat-option  [value]="true" (click)="siblings(true)">Yes</mat-option>
+          <mat-option *ngIf="siblingInformation().controls.length == 0" [value]="false" (click)="siblings(false)">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <!-- <div formArrayName="siblingInformation">
+
+        <div *ngFor="let sib of this.student.controls.siblingInformation['controls'];let i= index" [formGroupName]="i">
+         name: <input  type="text" formControlName="name" >{{i}}
+         age: <input  type="text" formControlName="age" >{{i}}
+        </div>
+      </div> -->
+
+      <br>
+      <br>
+      <div class="container"  *ngIf="isSiblings == true">
+        <button type="button" mat-raised-button color="primary" (click)="addSibling()" title="Add Sibling"> <mat-icon>add</mat-icon></button>
+
+          <table  formArrayName="siblingInformation">
+
+            <tr *ngFor="let sibling of siblingInformation().controls; let i=index" [formGroupName]="i">
+              <div >
+
+                <td >
+                  <mat-form-field>
+                    <mat-label> Name : </mat-label>
+                  <input matInput type="text" formControlName="name" required>
+                  </mat-form-field>
+              </td>
+
+              <td>
+                  <mat-form-field style="margin-left: 10px;">
+                    <mat-label> Age : </mat-label>
+                  <input matInput type="number" formControlName="age" required>
+                </mat-form-field>
+              </td>
+              <td>
+                  <button style="margin-left: 10px;" *ngIf="sibling.value.id == null " mat-raised-button color="warn" (click)="removeSibling(i,sibling.value)" title="Remove" ><mat-icon>close</mat-icon></button>
+                  <!-- <button *ngIf="sibling.value.id != null" mat-raised-button color="primary" (click)="updateSibInfo(sibling.value)" title="Remove" ><mat-icon>save</mat-icon></button> -->
+                  <button style="margin-left: 10px;" *ngIf="sibling.value.id != null" mat-raised-button color="danger" (click)="deleteSibInfo(i,sibling.value)" title="Remove" ><mat-icon>delete</mat-icon></button>
+              </td>
+              </div>
+
+            </tr>
+          </table>
+
+        <br/>
+
+      </div>
+
+<!--
+      <div formArrayName="siblingInformation">
+
+        <div *ngFor="let d of siblingInformation().controls; let i=index;">
+
+          <div [formGroupName]="i">
+          <label>name: </label>
+            <input formControlName="name" />
+            <input formControlName="age" />
+          </div>
+        </div>
+      </div> -->
+
+
+
+
+    </mat-tab>
+
+  <!--  <mat-tab label="Fee Details">
+      <br>
+      <mat-form-field >
+       <input matInput type="number" placeholder="Admission Fee" formControlName="admissionFee" id="admissionFee"  >
+      </mat-form-field>
+       &nbsp; &nbsp;
+
+      <mat-form-field >
+       <input matInput type="number" placeholder="Exam Fee" formControlName="examFee" id="examFee"  >
+      </mat-form-field>
+       &nbsp; &nbsp;
+
+      <mat-form-field >
+         <input matInput type="number" placeholder="School Fee" formControlName="schoolFee" id="schoolFee"  >
+      </mat-form-field>
+       &nbsp; &nbsp;
+
+      <mat-form-field >
+        <input matInput type="number" placeholder="Bus Fee" formControlName="busFee" id="busFee"  >
+      </mat-form-field>
+      <br>
+
+      <mat-form-field >
+         <input matInput type="number" placeholder="AdmissionFeePaid" formControlName="admissionFeePaid" id="admissionFeePaid" >
+      </mat-form-field>
+       <br>
+
+      <mat-form-field >
+        <input matInput type="number" placeholder="BusFeePaid" formControlName="busFeePaid" id="busFeePaid" >
+      </mat-form-field>
+      <br>
+      <mat-form-field >
+        <input matInput type="number" placeholder="ExamFeePaid" formControlName="examFeePaid" id="examFeePaid" >
+      </mat-form-field>
+      <br>
+
+    </mat-tab>
+    -->
+
+  </mat-tab-group>
+
+</mat-dialog-content>
+</form>
+<mat-dialog-actions align="end">
+
+  <button type="button" mat-raised-button color="warn" mat-dialog-close >Cancel</button>
+  <button mat-raised-button (click)="update(student.value)" [disabled]="!student.valid || student.pristine" color="primary" >Update</button>
+
+</mat-dialog-actions>
+
+
